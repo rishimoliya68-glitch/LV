@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ÉLORA FRAGRANCES | Haute Parfumerie</title>
+  <!-- Google Fonts for Editorial Luxury Aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      --bg-warm-ivory: #FBF9F5;
+      --bg-champagne: #F2ECE1;
+      --bg-surface: #FFFFFF;
+      --color-charcoal: #121212;
+      --color-subtle-gray: #666666;
+      --color-border: #E5DEC9;
+      --color-gold: #C5A059;
+      --color-gold-hover: #A3803C;
+      --color-gold-light: #F7F3EA;
+      --color-muted-brown: #4A3E3D;
+      --color-danger: #9B2C2C;
+      --color-success: #2F855A;
+      
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+      
+      --transition-smooth: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      --box-shadow-soft: 0 10px 30px rgba(18, 18, 18, 0.05);
+      --box-shadow-elevated: 0 20px 40px rgba(18, 18, 18, 0.12);
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+    }
+
+    /* Reset & Core Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-warm-ivory);
+      color: var(--color-charcoal);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      font-weight: 300;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-smooth);
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      background: none;
+      font-family: var(--font-sans);
+      transition: var(--transition-smooth);
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Layout Utility Classes */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-padding {
+      padding: 5rem 0;
+    }
+
+    .text-center { text-align: center; }
+    .text-gold { color: var(--color-gold); }
+    .uppercase { text-transform: uppercase; letter-spacing: 0.1em; }
+
+    .section-title {
+      font-size: 2.75rem;
+      color: var(--color-charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--color-subtle-gray);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      margin-bottom: 3rem;
+    }
+
+    /* Luxury Buttons */
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      padding: 1rem 2.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--color-charcoal);
+      border-radius: var(--radius-sm);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--color-gold);
+      border-color: var(--color-gold);
+      color: var(--color-charcoal);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(197, 160, 89, 0.25);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      background-color: transparent;
+      color: var(--color-charcoal);
+      padding: 1rem 2.25rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 1px solid var(--color-charcoal);
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      transform: translateY(-2px);
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-charcoal);
+      border: 1px solid var(--color-gold);
+      padding: 1rem 2.25rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+
+    .btn-gold:hover {
+      background-color: var(--color-gold-hover);
+      border-color: var(--color-gold-hover);
+      color: #FFF;
+      transform: translateY(-2px);
+    }
+
+    /* Badges & Pills */
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+
+    .badge-gold { background: var(--color-gold-light); color: var(--color-gold); border: 1px solid var(--color-gold); }
+    .badge-dark { background: var(--color-charcoal); color: #FFF; }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .announcement-bar {
+      background-color: var(--color-charcoal);
+      color: var(--bg-champagne);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    .header-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(251, 249, 245, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .logo {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      color: var(--color-charcoal);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .logo span {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 0.55rem;
+      letter-spacing: 0.4em;
+      margin-top: 4px;
+      color: var(--color-gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.825rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-charcoal);
+      position: relative;
+      padding: 0.5rem 0;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background-color: var(--color-gold);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .action-icon {
+      position: relative;
+      font-size: 1.15rem;
+      color: var(--color-charcoal);
+      background: transparent;
+      padding: 0.25rem;
+    }
+
+    .action-icon:hover {
+      color: var(--color-gold);
+    }
+
+    .icon-badge {
+      position: absolute;
+      top: -5px;
+      right: -8px;
+      background-color: var(--color-gold);
+      color: var(--color-charcoal);
+      font-size: 0.65rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      font-size: 1.4rem;
+    }
+
+    /* Mobile Menu Drawer */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 380px;
+      height: 100vh;
+      background: var(--bg-warm-ivory);
+      z-index: 1000;
+      padding: 2.5rem 2rem;
+      transition: var(--transition-smooth);
+      box-shadow: var(--box-shadow-elevated);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .mobile-nav-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mobile-nav-links a {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      color: var(--color-charcoal);
+    }
+
+    /* Overlay Backdrops */
+    .overlay-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 900;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .overlay-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      height: calc(100vh - 110px);
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(242,236,225,0.7) 0%, rgba(251,249,245,0.9) 100%),
+                  url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      max-width: 650px;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.3em;
+      color: var(--color-gold);
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: 4.2rem;
+      line-height: 1.08;
+      margin-bottom: 1.5rem;
+      color: var(--color-charcoal);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: var(--color-subtle-gray);
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+      max-width: 520px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    /* ==========================================================================
+       PRODUCT CATEGORIES CARDS
+       ========================================================================== */
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.75rem;
+    }
+
+    .category-card {
+      position: relative;
+      height: 380px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--box-shadow-soft);
+    }
+
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.7s ease;
+    }
+
+    .category-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .category-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(18,18,18,0.85) 0%, rgba(18,18,18,0.1) 60%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      color: #FFF;
+      transition: var(--transition-smooth);
+    }
+
+    .category-card:hover .category-overlay {
+      background: linear-gradient(to top, rgba(18,18,18,0.92) 0%, rgba(18,18,18,0.2) 70%);
+    }
+
+    .category-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.35rem;
+      color: var(--bg-champagne);
+    }
+
+    .category-desc {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .category-btn {
+      align-self: flex-start;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* ==========================================================================
+       PRODUCT CATALOG & FILTER CONTROLS
+       ========================================================================== */
+    .catalog-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      padding: 0.5rem 1.25rem;
+      font-size: 0.8rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      background: var(--bg-surface);
+      color: var(--color-charcoal);
+      cursor: pointer;
+    }
+
+    .chip.active, .chip:hover {
+      background: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      border-color: var(--color-charcoal);
+    }
+
+    .search-sort-wrapper {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .search-input-box {
+      position: relative;
+    }
+
+    .search-input-box input {
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      background: var(--bg-surface);
+      width: 200px;
+    }
+
+    .search-input-box i {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--color-subtle-gray);
+      font-size: 0.85rem;
+    }
+
+    .sort-select {
+      padding: 0.6rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      background: var(--bg-surface);
+      color: var(--color-charcoal);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--box-shadow-soft);
+      border-color: var(--color-gold);
+    }
+
+    .product-image-wrap {
+      position: relative;
+      height: 300px;
+      background: #F8F6F0;
+      overflow: hidden;
+    }
+
+    .product-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .product-card:hover .product-image-wrap img {
+      transform: scale(1.06);
+    }
+
+    .product-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 2;
+    }
+
+    .wishlist-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-charcoal);
+      z-index: 2;
+    }
+
+    .wishlist-btn.active, .wishlist-btn:hover {
+      color: var(--color-danger);
+      background: #FFF;
+    }
+
+    .quick-view-btn {
+      position: absolute;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      background: rgba(18, 18, 18, 0.9);
+      color: #FFF;
+      text-align: center;
+      padding: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      transition: var(--transition-smooth);
+      z-index: 2;
+    }
+
+    .product-card:hover .quick-view-btn {
+      bottom: 0;
+    }
+
+    .product-info {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-family {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-bottom: 0.35rem;
+      font-weight: 600;
+    }
+
+    .product-title {
+      font-size: 1.35rem;
+      color: var(--color-charcoal);
+      margin-bottom: 0.4rem;
+    }
+
+    .product-notes-summary {
+      font-size: 0.8rem;
+      color: var(--color-subtle-gray);
+      margin-bottom: 0.8rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .product-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--color-gold);
+      margin-bottom: 1rem;
+    }
+
+    .product-rating span {
+      color: var(--color-subtle-gray);
+      margin-left: 0.25rem;
+    }
+
+    .size-chips-mini {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .size-btn-mini {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--bg-warm-ivory);
+    }
+
+    .size-btn-mini.selected {
+      border-color: var(--color-charcoal);
+      background: var(--color-charcoal);
+      color: #FFF;
+    }
+
+    .product-bottom {
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px dashed var(--color-border);
+    }
+
+    .product-price {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-current {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--color-charcoal);
+    }
+
+    .price-original {
+      font-size: 0.8rem;
+      text-decoration: line-through;
+      color: var(--color-subtle-gray);
+    }
+
+    .add-cart-btn {
+      padding: 0.6rem 1rem;
+      background: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+    }
+
+    .add-cart-btn:hover {
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+    }
+
+    /* ==========================================================================
+       SCENT FINDER AI FLOATING ASSISTANT
+       ========================================================================== */
+    .scent-ai-trigger {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 800;
+      background: var(--color-charcoal);
+      color: var(--color-gold);
+      border: 1px solid var(--color-gold);
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-full);
+      box-shadow: var(--box-shadow-elevated);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scent-ai-trigger:hover {
+      transform: scale(1.05);
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+    }
+
+    .scent-ai-trigger i {
+      font-size: 1.1rem;
+    }
+
+    /* AI Chat Modal */
+    .scent-ai-modal {
+      position: fixed;
+      bottom: 5.5rem;
+      right: 2rem;
+      width: 420px;
+      max-width: calc(100vw - 2rem);
+      height: 580px;
+      max-height: calc(100vh - 8rem);
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--box-shadow-elevated);
+      border: 1px solid var(--color-border);
+      z-index: 850;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .scent-ai-modal.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+    }
+
+    .ai-header {
+      background: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--color-gold);
+    }
+
+    .ai-header-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .ai-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    .ai-body {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      background: var(--bg-warm-ivory);
+    }
+
+    .chat-msg {
+      max-width: 85%;
+      padding: 0.85rem 1.15rem;
+      border-radius: var(--radius-md);
+      font-size: 0.875rem;
+      line-height: 1.5;
+    }
+
+    .chat-msg.bot {
+      background: var(--bg-surface);
+      color: var(--color-charcoal);
+      border: 1px solid var(--color-border);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+    }
+
+    .chat-msg.user {
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+      font-weight: 500;
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+    }
+
+    .chip-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .option-chip {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-gold);
+      color: var(--color-charcoal);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .option-chip:hover {
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+    }
+
+    .ai-recommendation-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      margin-top: 0.75rem;
+      display: flex;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .ai-recommendation-card img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+
+    .ai-rec-details {
+      flex: 1;
+    }
+
+    .ai-rec-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .ai-rec-reason {
+      font-size: 0.72rem;
+      color: var(--color-subtle-gray);
+      margin: 0.2rem 0;
+    }
+
+    .ai-footer {
+      padding: 0.75rem 1.5rem;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--color-subtle-gray);
+    }
+
+    /* ==========================================================================
+       OFFERS & BUNDLES SECTION
+       ========================================================================== */
+    .bundles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .bundle-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--box-shadow-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .bundle-card:hover {
+      border-color: var(--color-gold);
+      transform: translateY(-4px);
+    }
+
+    .bundle-image {
+      height: 240px;
+      position: relative;
+    }
+
+    .bundle-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .bundle-content {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .bundle-title {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .bundle-includes {
+      font-size: 0.825rem;
+      color: var(--color-subtle-gray);
+      margin-bottom: 1.25rem;
+    }
+
+    .bundle-price-wrap {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ==========================================================================
+       LAYERING GUIDE & BRAND STORY
+       ========================================================================== */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .story-image-stack {
+      position: relative;
+    }
+
+    .story-img-main {
+      border-radius: var(--radius-md);
+      box-shadow: var(--box-shadow-elevated);
+      width: 85%;
+    }
+
+    .story-img-sub {
+      position: absolute;
+      bottom: -2rem;
+      right: 0;
+      width: 50%;
+      border-radius: var(--radius-md);
+      border: 4px solid var(--bg-warm-ivory);
+      box-shadow: var(--box-shadow-soft);
+    }
+
+    .story-content h2 {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-content p {
+      color: var(--color-subtle-gray);
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    /* Layering Steps */
+    .layering-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .layer-step-card {
+      background: var(--bg-champagne);
+      padding: 1.75rem;
+      border-radius: var(--radius-md);
+      border-left: 3px solid var(--color-gold);
+    }
+
+    .layer-num {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--color-gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ==========================================================================
+       SLIDE-OUT CART DRAWER & CHECKOUT MODAL
+       ========================================================================== */
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 440px;
+      max-width: 100vw;
+      height: 100vh;
+      background: var(--bg-surface);
+      z-index: 1001;
+      box-shadow: var(--box-shadow-elevated);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cart-drawer.open {
+      right: 0;
+    }
+
+    .cart-header {
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .cart-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.5rem 2rem;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.25rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .cart-item img {
+      width: 75px;
+      height: 85px;
+      object-fit: cover;
+      border-radius: var(--radius-sm);
+    }
+
+    .cart-item-details {
+      flex: 1;
+    }
+
+    .cart-item-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .cart-item-meta {
+      font-size: 0.75rem;
+      color: var(--color-subtle-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .qty-controls {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+    }
+
+    .qty-btn {
+      padding: 0.2rem 0.6rem;
+      font-size: 0.85rem;
+    }
+
+    .qty-value {
+      padding: 0 0.6rem;
+      font-size: 0.8rem;
+    }
+
+    .cart-footer {
+      padding: 1.5rem 2rem;
+      border-top: 1px solid var(--color-border);
+      background: var(--bg-warm-ivory);
+    }
+
+    .coupon-box {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .coupon-box input {
+      flex: 1;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      color: var(--color-subtle-gray);
+    }
+
+    .summary-row.total {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--color-charcoal);
+      margin-top: 0.75rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    /* Modal Framework (QuickView, Checkout, Search) */
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1050;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: var(--transition-smooth);
+    }
+
+    .modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: var(--bg-surface);
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      box-shadow: var(--box-shadow-elevated);
+      border: 1px solid var(--color-border);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      font-size: 1.25rem;
+      z-index: 10;
+      color: var(--color-charcoal);
+    }
+
+    /* Checkout Stepper Styling */
+    .checkout-steps {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--color-border);
+      padding: 1.5rem 2rem;
+      background: var(--bg-warm-ivory);
+    }
+
+    .step-item {
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-subtle-gray);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .step-item.active {
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    .step-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--color-border);
+      color: var(--color-charcoal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+    }
+
+    .step-item.active .step-number {
+      background: var(--color-gold);
+      color: var(--color-charcoal);
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+      color: var(--color-charcoal);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      background: var(--bg-warm-ivory);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-gold);
+      background: #FFF;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Quick View Layout */
+    .quickview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .notes-pyramid {
+      margin: 1.5rem 0;
+      background: var(--bg-champagne);
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+    }
+
+    .note-row {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .note-row strong {
+      width: 80px;
+      color: var(--color-gold);
+    }
+
+    /* Testimonials & FAQs */
+    .accordion-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.25rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      text-align: left;
+    }
+
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      color: var(--color-subtle-gray);
+      font-size: 0.925rem;
+      line-height: 1.7;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 200px;
+      padding-bottom: 1.25rem;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 2rem;
+      left: 2rem;
+      z-index: 2000;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toast {
+      background: var(--color-charcoal);
+      color: var(--bg-warm-ivory);
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--color-gold);
+      box-shadow: var(--box-shadow-elevated);
+      font-size: 0.85rem;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    /* Footer */
+    footer {
+      background: var(--color-charcoal);
+      color: var(--bg-champagne);
+      padding: 5rem 0 2rem;
+      border-top: 1px solid var(--color-gold);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-col h4 {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-gold);
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: #CCC;
+      font-size: 0.85rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .quickview-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-title { font-size: 3rem; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-title { font-size: 2.4rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .checkout-steps { overflow-x: auto; }
+      .cart-drawer { width: 100vw; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKDROP OVERLAY -->
+  <div class="overlay-backdrop" id="overlayBackdrop" onclick="closeAllDrawersAndModals()"></div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="announcement-bar">
+    Complimentary Express Shipping on Orders Over $150 | Use Code <strong>WELCOME10</strong>
+  </div>
+
+  <!-- HEADER & NAVIGATION -->
+  <header class="header-sticky">
+    <div class="container nav-container">
+      <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><i class="fa-solid fa-bars"></i></button>
+
+      <a href="#" class="logo">
+        ÉLORA
+        <span>FRAGRANCES</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero" class="nav-link active">Home</a></li>
+          <li><a href="#catalog" class="nav-link">Shop All</a></li>
+          <li><a href="#categories" class="nav-link">Collections</a></li>
+          <li><a href="#bundles" class="nav-link">Gift Sets</a></li>
+          <li><a href="#story" class="nav-link">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="action-icon" onclick="openSearchModal()" title="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button class="action-icon" onclick="openAccountModal()" title="Account"><i class="fa-regular fa-user"></i></button>
+        <button class="action-icon" onclick="toggleWishlistDrawer()" title="Wishlist">
+          <i class="fa-regular fa-heart"></i>
+          <span class="icon-badge" id="wishlistCountBadge">0</span>
+        </button>
+        <button class="action-icon" onclick="toggleCartDrawer()" title="Bag">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="icon-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE MENU DRAWER -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div>
+      <div class="mobile-menu-header">
+        <div class="logo">ÉLORA</div>
+        <button onclick="toggleMobileMenu()"><i class="fa-solid fa-xmark fa-lg"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="#hero" onclick="toggleMobileMenu()">Home</a></li>
+        <li><a href="#catalog" onclick="toggleMobileMenu()">Shop Catalog</a></li>
+        <li><a href="#categories" onclick="toggleMobileMenu()">Fragrance Families</a></li>
+        <li><a href="#bundles" onclick="toggleMobileMenu()">Bundles & Offers</a></li>
+        <li><a href="#story" onclick="toggleMobileMenu()">Brand Heritage</a></li>
+      </ul>
+    </div>
+    <div style="font-size:0.8rem; color:var(--color-subtle-gray);">
+      &copy; ÉLORA Haute Parfumerie.
+    </div>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-subtitle">HAUTE PARFUMERIE</div>
+        <h1 class="hero-title">A SCENT THAT DEFINES YOU.</h1>
+        <p class="hero-desc">Discover your personal signature fragrance. Crafted with rare botanicals and exquisite artisanal oils engineered to leave an unforgettably lasting impression.</p>
+        <div class="hero-buttons">
+          <a href="#catalog" class="btn-primary">Explore Collection</a>
+          <button class="btn-secondary" onclick="openScentAI()"><i class="fa-solid fa-wand-magic-sparkles text-gold"></i> Find Your Scent</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRAGRANCE CATEGORIES -->
+  <section class="section-padding" id="categories">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">Fragrance Collections</h2>
+        <p class="section-subtitle">Curated olfactory journeys for every preference</p>
+      </div>
+
+      <div class="categories-grid">
+        <div class="category-card" onclick="filterCatalogByCategory('Her')">
+          <img src="https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80" alt="Perfumes for Her" onerror="this.src='https://placehold.co/800x1000/F2ECE1/121212?text=For+Her'">
+          <div class="category-overlay">
+            <h3 class="category-title">Perfumes For Her</h3>
+            <p class="category-desc">Sensual florals, sweet vanilla, and radiant warmth.</p>
+            <span class="category-btn">Explore Range <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="category-card" onclick="filterCatalogByCategory('Him')">
+          <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80" alt="Perfumes for Him" onerror="this.src='https://placehold.co/800x1000/F2ECE1/121212?text=For+Him'">
+          <div class="category-overlay">
+            <h3 class="category-title">Perfumes For Him</h3>
+            <p class="category-desc">Sophisticated woods, crisp citrus, and smoky accord.</p>
+            <span class="category-btn">Explore Range <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="category-card" onclick="filterCatalogByCategory('Unisex')">
+          <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80" alt="Unisex Fragrances" onerror="this.src='https://placehold.co/800x1000/F2ECE1/121212?text=Unisex'">
+          <div class="category-overlay">
+            <h3 class="category-title">Unisex Collection</h3>
+            <p class="category-desc">Harmonious blends transcending gender boundaries.</p>
+            <span class="category-btn">Explore Range <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <div class="category-card" onclick="filterCatalogByCategory('Oud')">
+          <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80" alt="Oud Collection" onerror="this.src='https://placehold.co/800x1000/F2ECE1/121212?text=Oud+Reserve'">
+          <div class="category-overlay">
+            <h3 class="category-title">Royal Oud Reserve</h3>
+            <p class="category-desc">Opulent agarwood infused with oriental spices.</p>
+            <span class="category-btn">Explore Range <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG & FILTERS -->
+  <section class="section-padding" id="catalog" style="background: var(--bg-champagne); border-top:1px solid var(--color-border);">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">The Fragrance Library</h2>
+        <p class="section-subtitle">Meticulously blended extraits de parfum</p>
+      </div>
+
+      <div class="catalog-controls">
+        <div class="filter-chips">
+          <button class="chip active" onclick="filterCategory('All', this)">All Scents</button>
+          <button class="chip" onclick="filterCategory('Her', this)">For Her</button>
+          <button class="chip" onclick="filterCategory('Him', this)">For Him</button>
+          <button class="chip" onclick="filterCategory('Unisex', this)">Unisex</button>
+          <button class="chip" onclick="filterCategory('Oud', this)">Oud & Oriental</button>
+          <button class="chip" onclick="filterCategory('Floral', this)">Floral & Fresh</button>
+        </div>
+
+        <div class="search-sort-wrapper">
+          <div class="search-input-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="catalogSearchInput" placeholder="Search notes, names..." onkeyup="handleCatalogSearch()">
+          </div>
+          <select class="sort-select" id="sortSelect" onchange="handleSortChange()">
+            <option value="featured">Featured Order</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- PRODUCT GRID -->
+      <div class="product-grid" id="productGridContainer">
+        <!-- Injected dynamically via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS & BUNDLES SECTION -->
+  <section class="section-padding" id="bundles">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">Curated Gift Sets & Bundles</h2>
+        <p class="section-subtitle">Exclusive duo combinations with complimentary savings</p>
+      </div>
+
+      <div class="bundles-grid">
+        <!-- Bundle 1 -->
+        <div class="bundle-card">
+          <div class="bundle-image">
+            <img src="https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80" alt="Everyday Duo" onerror="this.src='https://placehold.co/800x600/F2ECE1/121212?text=Everyday+Duo'">
+            <span class="badge badge-dark" style="position:absolute; top:1rem; left:1rem;">SAVE $45</span>
+          </div>
+          <div class="bundle-content">
+            <h3 class="bundle-title">The Everyday Ritual Duo</h3>
+            <p class="bundle-includes">Includes: Soleil d'Or (50ml) + Vetiver Royale (50ml)</p>
+            <div class="bundle-price-wrap">
+              <span class="price-current">$240.00</span>
+              <span class="price-original">$285.00</span>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="addBundleToCart('b1')">Add Duo To Bag</button>
+          </div>
+        </div>
+
+        <!-- Bundle 2 -->
+        <div class="bundle-card">
+          <div class="bundle-image">
+            <img src="https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80" alt="His & Hers Set" onerror="this.src='https://placehold.co/800x600/F2ECE1/121212?text=His+%26+Hers'">
+            <span class="badge badge-gold" style="position:absolute; top:1rem; left:1rem;">LIMITED EDITION</span>
+          </div>
+          <div class="bundle-content">
+            <h3 class="bundle-title">His & Hers Signature Box</h3>
+            <p class="bundle-includes">Includes: Noir Absolu (100ml) + Rose Imperiale (100ml)</p>
+            <div class="bundle-price-wrap">
+              <span class="price-current">$380.00</span>
+              <span class="price-original">$440.00</span>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="addBundleToCart('b2')">Add Gift Set To Bag</button>
+          </div>
+        </div>
+
+        <!-- Bundle 3 -->
+        <div class="bundle-card">
+          <div class="bundle-image">
+            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80" alt="Discovery Set" onerror="this.src='https://placehold.co/800x600/F2ECE1/121212?text=Discovery+Set'">
+            <span class="badge badge-dark" style="position:absolute; top:1rem; left:1rem;">BESTSELLER</span>
+          </div>
+          <div class="bundle-content">
+            <h3 class="bundle-title">Grand Discovery Coffret</h3>
+            <p class="bundle-includes">Includes: 5x 10ml Miniatures of Our Top Niche Extracts</p>
+            <div class="bundle-price-wrap">
+              <span class="price-current">$110.00</span>
+              <span class="price-original">$135.00</span>
+            </div>
+            <button class="btn-primary" style="width:100%" onclick="addBundleToCart('b3')">Add Coffret To Bag</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND HERITAGE & LAYERING GUIDE -->
+  <section class="section-padding" id="story" style="background:var(--bg-surface);">
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-image-stack">
+          <img src="https://images.unsplash.com/photo-1508746829417-e6f548d8d6ed?auto=format&fit=crop&w=800&q=80" class="story-img-main" alt="Brand Craftsmanship" onerror="this.src='https://placehold.co/800x1000/F2ECE1/121212?text=Craftsmanship'">
+          <img src="https://images.unsplash.com/photo-1595425970377-c9703cf48b6d?auto=format&fit=crop&w=600&q=80" class="story-img-sub" alt="Scent Ingredients" onerror="this.src='https://placehold.co/600x600/F2ECE1/121212?text=Ingredients'">
+        </div>
+
+        <div class="story-content">
+          <span class="section-subtitle">THE ART OF PERFUMERY</span>
+          <h2>More Than a Fragrance. A Signature.</h2>
+          <p>Founded in Grasse and refined in Paris, ÉLORA FRAGRANCES was created on a single belief: scent is the most intimate form of memory. We combine centuries-old French steam distillation with modern accord synthesis.</p>
+          <p>Every bottle is hand-poured in small batches, utilizing pure flower absolutes, ethically harvested agarwood, and organic cold-pressed citrus essences.</p>
+          
+          <h3 style="font-size:1.5rem; margin-top:2rem; margin-bottom:1rem;">The ÉLORA Layering Artistry</h3>
+          <div class="layering-steps">
+            <div class="layer-step-card">
+              <div class="layer-num">01</div>
+              <strong style="display:block; margin-bottom:0.25rem;">Base Foundation</strong>
+              <span style="font-size:0.8rem; color:var(--color-subtle-gray);">Apply a rich Woody or Oud base to pulse points.</span>
+            </div>
+            <div class="layer-step-card">
+              <div class="layer-num">02</div>
+              <strong style="display:block; margin-bottom:0.25rem;">Accent Veil</strong>
+              <span style="font-size:0.8rem; color:var(--color-subtle-gray);">Mist a lighter Floral or Fresh accord over heart areas.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-padding" style="background:var(--bg-champagne);">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="section-title">Connoisseur Reviews</h2>
+        <p class="section-subtitle">Echoes from our distinguished clientele</p>
+      </div>
+
+      <div class="bundles-grid">
+        <div style="background:#FFF; padding:2rem; border-radius:var(--radius-md); border:1px solid var(--color-border);">
+          <div style="color:var(--color-gold); margin-bottom:1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="font-family:var(--font-serif); font-size:1.2rem; font-style:italic; margin-bottom:1.5rem;">"Noir Absolu is hypnotic. The longevity is incredible—I could still detect subtle amber notes well into the evening."</p>
+          <strong style="display:block; font-size:0.85rem;">— Victoria S., New York</strong>
+          <span style="font-size:0.75rem; color:var(--color-subtle-gray);">Verified Buyer</span>
+        </div>
+
+        <div style="background:#FFF; padding:2rem; border-radius:var(--radius-md); border:1px solid var(--color-border);">
+          <div style="color:var(--color-gold); margin-bottom:1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="font-family:var(--font-serif); font-size:1.2rem; font-style:italic; margin-bottom:1.5rem;">"The Scent Finder AI suggested Amber & Vanille based on my love for warm cozy notes. It matched my taste flawlessly!"</p>
+          <strong style="display:block; font-size:0.85rem;">— Julian M., London</strong>
+          <span style="font-size:0.75rem; color:var(--color-subtle-gray);">Verified Buyer</span>
+        </div>
+
+        <div style="background:#FFF; padding:2rem; border-radius:var(--radius-md); border:1px solid var(--color-border);">
+          <div style="color:var(--color-gold); margin-bottom:1rem;"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p style="font-family:var(--font-serif); font-size:1.2rem; font-style:italic; margin-bottom:1.5rem;">"Packaging alone feels like opening a piece of high art. ÉLORA sets a new gold standard in niche perfumery."</p>
+          <strong style="display:block; font-size:0.85rem;">— Elena R., Paris</strong>
+          <span style="font-size:0.75rem; color:var(--color-subtle-gray);">Verified Buyer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section-padding" style="background:var(--bg-surface);">
+    <div class="container" style="max-width:800px;">
+      <div class="text-center">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you need to know about our extraits</p>
+      </div>
+
+      <div class="accordion">
+        <div class="accordion-item" onclick="toggleFaq(this)">
+          <div class="accordion-header">
+            <span>What concentration are ÉLORA fragrances?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            All our creations are formulated as <strong>Extrait de Parfum</strong> (25% to 30% concentration), ensuring exceptional depth, sillage, and longevity on the skin lasting upwards of 12-16 hours.
+          </div>
+        </div>
+
+        <div class="accordion-item" onclick="toggleFaq(this)">
+          <div class="accordion-header">
+            <span>Are your perfume ingredients cruelty-free?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            Yes, 100% cruelty-free. We strictly do not test on animals, nor do we source ingredients from suppliers that engage in animal testing.
+          </div>
+        </div>
+
+        <div class="accordion-item" onclick="toggleFaq(this)">
+          <div class="accordion-header">
+            <span>How does international express shipping work?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="accordion-content">
+            We offer complimentary courier express shipping worldwide on orders above $150. Delivery takes 2-4 business days, fully tracked and insured in temperature-controlled packaging.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="logo" style="color:#FFF; margin-bottom:1rem;">ÉLORA <span>FRAGRANCES</span></div>
+          <p style="font-size:0.85rem; color:#AAA; max-width:300px; margin-bottom:1.5rem;">
+            Haute Parfumerie engineered for lingering sophistication. Handcrafted extraits de parfum made with rare absolutes.
+          </p>
+          <div style="display:flex; gap:1rem; font-size:1.1rem; color:var(--color-gold);">
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <ul class="footer-links">
+            <li><a href="#catalog">Fragrance Library</a></li>
+            <li><a href="#categories">For Her</a></li>
+            <li><a href="#categories">For Him</a></li>
+            <li><a href="#categories">Unisex Reserve</a></li>
+            <li><a href="#bundles">Gift Sets</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Client Care</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="showToast('Demo: Contact form')">Contact Atelier</a></li>
+            <li><a href="#" onclick="showToast('Demo: Shipping policy')">Shipping & Returns</a></li>
+            <li><a href="#" onclick="showToast('Demo: Order tracking')">Track Order</a></li>
+            <li><a href="#" onclick="showToast('Demo: Privacy Policy')">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Atelier Newsletter</h4>
+          <p style="font-size:0.8rem; color:#AAA; margin-bottom:1rem;">Subscribe to receive private invitations to limited batch releases.</p>
+          <form onsubmit="handleNewsletterSubmit(event)" style="display:flex; gap:0.5rem;">
+            <input type="email" placeholder="Your email address..." required style="padding:0.6rem; font-size:0.8rem; border-radius:var(--radius-sm); border:1px solid #444; background:#222; color:#FFF; flex:1;">
+            <button class="btn-gold" type="submit" style="padding:0.6rem 1rem;">Join</button>
+          </form>
+        </div>
+      </div>
+
+      <div style="border-top:1px solid #333; padding-top:2rem; display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:#888; flex-wrap:wrap; gap:1rem;">
+        <div>&copy; 2026 ÉLORA FRAGRANCES. All Rights Reserved.</div>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="color:var(--color-gold); font-size:0.8rem;">Back to top <i class="fa-solid fa-arrow-up"></i></button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       MODALS & DRAWERS
+       ========================================================================== -->
+
+  <!-- SCENT FINDER AI FLOATING WIDGET -->
+  <button class="scent-ai-trigger" onclick="toggleScentAI()">
+    <i class="fa-solid fa-wand-magic-sparkles"></i> Scent Finder AI
+  </button>
+
+  <div class="scent-ai-modal" id="scentAiModal">
+    <div class="ai-header">
+      <div class="ai-header-title">
+        <div class="ai-avatar"><i class="fa-solid fa-sparkles"></i></div>
+        <div>
+          <strong style="display:block; font-size:0.95rem;">Scent Finder AI</strong>
+          <span style="font-size:0.68rem; color:var(--color-gold);">Smart Recommendation Assistant</span>
+        </div>
+      </div>
+      <button onclick="toggleScentAI()" style="color:#FFF;"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <div class="ai-body" id="aiChatBody">
+      <!-- Dynamic chat messages injected here -->
+    </div>
+
+    <div class="ai-footer">
+      <span>Rule-based matching algorithm</span>
+      <button onclick="resetScentAiQuestionnaire()" style="color:var(--color-gold); font-weight:600;"><i class="fa-solid fa-rotate-right"></i> Restart</button>
+    </div>
+  </div>
+
+  <!-- SLIDE-OUT CART DRAWER -->
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3 style="font-family:var(--font-serif); font-size:1.5rem;">Your Shopping Bag</h3>
+      <button onclick="toggleCartDrawer()"><i class="fa-solid fa-xmark fa-lg"></i></button>
+    </div>
+
+    <div class="cart-body" id="cartItemsContainer">
+      <!-- Dynamic cart items injected here -->
+    </div>
+
+    <div class="cart-footer">
+      <div class="coupon-box">
+        <input type="text" id="couponCodeInput" placeholder="Promo Code (e.g. WELCOME10)">
+        <button class="btn-secondary" style="padding:0.6rem 1rem;" onclick="applyCouponCode()">Apply</button>
+      </div>
+
+      <div class="summary-row"><span>Subtotal:</span><span id="cartSubtotalText">$0.00</span></div>
+      <div class="summary-row" id="discountRow" style="display:none; color:var(--color-success)"><span>Discount:</span><span id="cartDiscountText">-$0.00</span></div>
+      <div class="summary-row"><span>Estimated Shipping:</span><span id="cartShippingText">Calculated at checkout</span></div>
+      <div class="summary-row total"><span>Total:</span><span id="cartTotalText">$0.00</span></div>
+
+      <button class="btn-primary" style="width:100%; margin-top:1.25rem;" onclick="openCheckoutModal()">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <!-- QUICK VIEW MODAL -->
+  <div class="modal" id="quickViewModal">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeQuickViewModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="quickview-grid" id="quickViewModalBody">
+        <!-- Injected dynamic quick view details -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MULTI-STEP CHECKOUT MODAL -->
+  <div class="modal" id="checkoutModal">
+    <div class="modal-content" style="max-width:750px;">
+      <button class="modal-close-btn" onclick="closeCheckoutModal()"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="checkout-steps">
+        <div class="step-item active" id="stepIndicator1"><span class="step-number">1</span> Details</div>
+        <div class="step-item" id="stepIndicator2"><span class="step-number">2</span> Shipping</div>
+        <div class="step-item" id="stepIndicator3"><span class="step-number">3</span> Review</div>
+        <div class="step-item" id="stepIndicator4"><span class="step-number">4</span> Payment</div>
+      </div>
+
+      <div style="padding:2rem;" id="checkoutStepContent">
+        <!-- Injected multi-step checkout form via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- SEARCH MODAL -->
+  <div class="modal" id="searchModal">
+    <div class="modal-content" style="max-width:600px; padding:2rem;">
+      <button class="modal-close-btn" onclick="closeSearchModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="section-title" style="font-size:1.8rem; margin-bottom:1rem;">Search Fragrances</h3>
+      <input type="text" class="form-control" id="modalSearchInput" placeholder="Type notes e.g., Oud, Vanilla, Jasmine..." onkeyup="executeModalSearch(this.value)">
+      <div id="modalSearchResults" style="margin-top:1.5rem; max-height:300px; overflow-y:auto;"></div>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL -->
+  <div class="modal" id="accountModal">
+    <div class="modal-content" style="max-width:420px; padding:2rem;">
+      <button class="modal-close-btn" onclick="closeAccountModal()"><i class="fa-solid fa-xmark"></i></button>
+      <h3 class="section-title" style="font-size:1.8rem; text-align:center; margin-bottom:1.5rem;">Atelier Client Sign In</h3>
+      <form onsubmit="handleAccountLogin(event)">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" class="form-control" required placeholder="client@domain.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" class="form-control" required placeholder="••••••••">
+        </div>
+        <button class="btn-primary" style="width:100%; margin-top:1rem;" type="submit">Sign In</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC & APPLICATION STATE
+       ========================================================================== -->
+  <script>
+    /* --------------------------------------------------------------------------
+       1. DATA STORE / SOURCE OF TRUTH
+       -------------------------------------------------------------------------- */
+    const PRODUCT_CATALOG = [
+      {
+        id: 'p1',
+        name: 'Noir Absolu',
+        family: 'Oud & Amber',
+        gender: 'Unisex',
+        tag: 'Best Seller',
+        tagType: 'badge-dark',
+        rating: 4.9,
+        reviewsCount: 128,
+        description: 'An intoxicating blend of dark agarwood, smoky incense, and opulent Bulgarian rose veiled in warm amber crispness.',
+        notes: { top: 'Bergamot, Pink Pepper', heart: 'Bulgarian Rose, Incense', base: 'Cambodian Oud, Amber, Patchouli' },
+        sillage: 'Strong',
+        longevity: '14+ Hours',
+        sizes: [
+          { size: '30 ml', price: 120 },
+          { size: '50 ml', price: 185 },
+          { size: '100 ml', price: 260 }
+        ],
+        image: 'https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'p2',
+        name: 'Rose Impériale',
+        family: 'Floral',
+        gender: 'Her',
+        tag: 'New Arrival',
+        tagType: 'badge-gold',
+        rating: 4.8,
+        reviewsCount: 94,
+        description: 'Centifolia roses harvested at dawn in Grasse, intertwined with velvety Turkish rose and soft peach undertones.',
+        notes: { top: 'Italian Mandarin, Lychee', heart: 'Grasse Rose, May Rose', base: 'White Musk, Cedarwood' },
+        sillage: 'Moderate',
+        longevity: '10+ Hours',
+        sizes: [
+          { size: '30 ml', price: 110 },
+          { size: '50 ml', price: 165 },
+          { size: '100 ml', price: 235 }
+        ],
+        image: 'https://images.unsplash.com/photo-1547887537-6158d64c35b3?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'p3',
+        name: 'Vetiver Royale',
+        family: 'Woody & Fresh',
+        gender: 'Him',
+        tag: 'Classic',
+        tagType: 'badge-dark',
+        rating: 4.7,
+        reviewsCount: 82,
+        description: 'Earthy Haitian vetiver balanced with crisp green citrus and a touch of bourbon vanilla complexity.',
+        notes: { top: 'Grapefruit, Cardamom', heart: 'Haitian Vetiver, Geranium', base: 'Cedarwood, Tonka Bean' },
+        sillage: 'Moderate',
+        longevity: '12+ Hours',
+        sizes: [
+          { size: '30 ml', price: 115 },
+          { size: '50 ml', price: 170 },
+          { size: '100 ml', price: 240 }
+        ],
+        image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'p4',
+        name: 'Soleil d\'Or',
+        family: 'Citrus & Amber',
+        gender: 'Unisex',
+        tag: 'Limited Edition',
+        tagType: 'badge-gold',
+        rating: 4.9,
+        reviewsCount: 65,
+        description: 'Sun-drenched Calabrian bergamot infused with neroli and a golden sea-salt amber trail.',
+        notes: { top: 'Calabrian Bergamot, Lemon', heart: 'Neroli, Orange Blossom', base: 'Ambergris, Driftwood' },
+        sillage: 'Moderate',
+        longevity: '8+ Hours',
+        sizes: [
+          { size: '30 ml', price: 105 },
+          { size: '50 ml', price: 155 },
+          { size: '100 ml', price: 220 }
+        ],
+        image: 'https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'p5',
+        name: 'Amber & Vanille',
+        family: 'Warm Gourmand',
+        gender: 'Her',
+        tag: 'Best Seller',
+        tagType: 'badge-dark',
+        rating: 5.0,
+        reviewsCount: 150,
+        description: 'Creamy Madagascar bourbon vanilla swirled with spiced amber resins and almond blossom.',
+        notes: { top: 'Almond Blossom, Anise', heart: 'Bourbon Vanilla, Orchid', base: 'Liquid Amber, Sandalwood' },
+        sillage: 'Strong',
+        longevity: '15+ Hours',
+        sizes: [
+          { size: '30 ml', price: 125 },
+          { size: '50 ml', price: 190 },
+          { size: '100 ml', price: 270 }
+        ],
+        image: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=800&q=80'
+      },
+      {
+        id: 'p6',
+        name: 'Cuir Majesté',
+        family: 'Leather & Oud',
+        gender: 'Him',
+        tag: 'Exclusif',
+        tagType: 'badge-gold',
+        rating: 4.8,
+        reviewsCount: 45,
+        description: 'Tuscan leather combined with wild saffron and rich cedar for an authoritative aura.',
+        notes: { top: 'Saffron, Thyme', heart: 'Black Leather, Jasmine', base: 'Amberwood, Suede' },
+        sillage: 'Strong',
+        longevity: '16+ Hours',
+        sizes: [
+          { size: '30 ml', price: 135 },
+          { size: '50 ml', price: 210 },
+          { size: '100 ml', price: 295 }
+        ],
+        image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=800&q=80'
+      }
+    ];
+
+    // APPLICATION STATE
+    let state = {
+      cart: JSON.parse(localStorage.getItem('elora_cart') || '[]'),
+      wishlist: JSON.parse(localStorage.getItem('elora_wishlist') || '[]'),
+      appliedCoupon: null,
+      currentFilterCategory: 'All',
+      searchQuery: '',
+      sortOption: 'featured',
+      checkoutStep: 1,
+      checkoutData: {}
+    };
+
+    /* --------------------------------------------------------------------------
+       2. INITIALIZATION & STORAGE PERSISTENCE
+       -------------------------------------------------------------------------- */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderCatalog();
+      updateCartUI();
+      updateWishlistUI();
+      initScentAiQuestionnaire();
+    });
+
+    function saveState() {
+      localStorage.setItem('elora_cart', JSON.stringify(state.cart));
+      localStorage.setItem('elora_wishlist', JSON.stringify(state.wishlist));
+      updateCartUI();
+      updateWishlistUI();
+    }
+
+    /* --------------------------------------------------------------------------
+       3. CATALOG RENDERING & FILTERING
+       -------------------------------------------------------------------------- */
+    function renderCatalog() {
+      const container = document.getElementById('productGridContainer');
+      if (!container) return;
+
+      let filtered = PRODUCT_CATALOG.filter(p => {
+        const matchesCategory = (state.currentFilterCategory === 'All') ||
+          (state.currentFilterCategory === 'Her' && p.gender === 'Her') ||
+          (state.currentFilterCategory === 'Him' && p.gender === 'Him') ||
+          (state.currentFilterCategory === 'Unisex' && p.gender === 'Unisex') ||
+          (state.currentFilterCategory === 'Oud' && p.family.includes('Oud')) ||
+          (state.currentFilterCategory === 'Floral' && (p.family.includes('Floral') || p.family.includes('Fresh')));
+
+        const matchesSearch = p.name.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          p.description.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+          p.family.toLowerCase().includes(state.searchQuery.toLowerCase());
+
+        return matchesCategory && matchesSearch;
+      });
+
+      // Sorting
+      if (state.sortOption === 'price-low') {
+        filtered.sort((a, b) => a.sizes[0].price - b.sizes[0].price);
+      } else if (state.sortOption === 'price-high') {
+        filtered.sort((a, b) => b.sizes[0].price - a.sizes[0].price);
+      } else if (state.sortOption === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div style="grid-column: 1/-1; text-align:center; padding: 4rem 1rem;">
+            <p style="font-family:var(--font-serif); font-size:1.5rem; color:var(--color-subtle-gray);">No fragrances match your selection.</p>
+            <button class="btn-secondary" style="margin-top:1rem;" onclick="resetCatalogFilters()">Reset All Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(product => {
+        const isWishlisted = state.wishlist.includes(product.id);
+        const defaultSize = product.sizes[1] || product.sizes[0]; // 50ml default
+
+        return `
+          <div class="product-card">
+            <div class="product-image-wrap">
+              <span class="badge ${product.tagType} product-tag">${product.tag}</span>
+              <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist('${product.id}')">
+                <i class="${isWishlisted ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+              </button>
+              <img src="${product.image}" alt="${product.name}" onerror="this.src='https://placehold.co/600x800/F2ECE1/121212?text=${encodeURIComponent(product.name)}'">
+              <button class="quick-view-btn" onclick="openQuickViewModal('${product.id}')">Quick View</button>
+            </div>
+            
+            <div class="product-info">
+              <span class="product-family">${product.family} &bull; ${product.gender}</span>
+              <h3 class="product-title">${product.name}</h3>
+              <div class="product-notes-summary">Notes: ${product.notes.top}</div>
+              
+              <div class="product-rating">
+                <i class="fa-solid fa-star"></i>
+                <strong>${product.rating}</strong>
+                <span>(${product.reviewsCount})</span>
+              </div>
+
+              <div class="product-bottom">
+                <div class="product-price">
+                  <span class="price-current">$${defaultSize.price}.00</span>
+                  <span style="font-size:0.65rem; color:var(--color-subtle-gray);">${defaultSize.size} Extrait</span>
+                </div>
+                <button class="add-cart-btn" onclick="addToCart('${product.id}', '${defaultSize.size}')">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function filterCategory(cat, el) {
+      state.currentFilterCategory = cat;
+      document.querySelectorAll('.filter-chips .chip').forEach(c => c.classList.remove('active'));
+      if (el) el.classList.add('active');
+      renderCatalog();
+    }
+
+    function filterCatalogByCategory(cat) {
+      const catalogEl = document.getElementById('catalog');
+      if (catalogEl) catalogEl.scrollIntoView({ behavior: 'smooth' });
+      filterCategory(cat, null);
+    }
+
+    function handleCatalogSearch() {
+      state.searchQuery = document.getElementById('catalogSearchInput').value;
+      renderCatalog();
+    }
+
+    function handleSortChange() {
+      state.sortOption = document.getElementById('sortSelect').value;
+      renderCatalog();
+    }
+
+    function resetCatalogFilters() {
+      state.searchQuery = '';
+      state.currentFilterCategory = 'All';
+      document.getElementById('catalogSearchInput').value = '';
+      renderCatalog();
+    }
+
+    /* --------------------------------------------------------------------------
+       4. SHOPPING CART SYSTEM & DRAWER
+       -------------------------------------------------------------------------- */
+    function addToCart(productId, sizeLabel, quantity = 1) {
+      const product = PRODUCT_CATALOG.find(p => p.id === productId);
+      if (!product) return;
+
+      const sizeObj = product.sizes.find(s => s.size === sizeLabel) || product.sizes[0];
+      const existingIndex = state.cart.findIndex(item => item.id === productId && item.size === sizeLabel);
+
+      if (existingIndex > -1) {
+        state.cart[existingIndex].quantity += quantity;
+      } else {
+        state.cart.push({
+          id: product.id,
+          name: product.name,
+          image: product.image,
+          size: sizeObj.size,
+          price: sizeObj.price,
+          quantity: quantity
+        });
+      }
+
+      saveState();
+      showToast(`Added ${product.name} (${sizeObj.size}) to your bag.`);
+      toggleCartDrawer(true);
+    }
+
+    function addBundleToCart(bundleId) {
+      if (bundleId === 'b1') {
+        state.cart.push({ id: 'b1', name: 'Everyday Ritual Duo', image: 'https://images.unsplash.com/photo-1616949755610-8c9bbc08f138?auto=format&fit=crop&w=400&q=80', size: '2x 50ml', price: 240, quantity: 1 });
+      } else if (bundleId === 'b2') {
+        state.cart.push({ id: 'b2', name: 'His & Hers Box', image: 'https://images.unsplash.com/photo-1523293182086-7651a899d37f?auto=format&fit=crop&w=400&q=80', size: '2x 100ml', price: 380, quantity: 1 });
+      } else if (bundleId === 'b3') {
+        state.cart.push({ id: 'b3', name: 'Grand Discovery Coffret', image: 'https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80', size: '5x 10ml', price: 110, quantity: 1 });
+      }
+      saveState();
+      showToast('Bundle added to shopping bag.');
+      toggleCartDrawer(true);
+    }
+
+    function updateCartItemQty(index, delta) {
+      if (!state.cart[index]) return;
+      state.cart[index].quantity += delta;
+      if (state.cart[index].quantity <= 0) {
+        state.cart.splice(index, 1);
+      }
+      saveState();
+    }
+
+    function updateCartUI() {
+      const cartBadge = document.getElementById('cartCountBadge');
+      const container = document.getElementById('cartItemsContainer');
+      const subtotalEl = document.getElementById('cartSubtotalText');
+      const totalEl = document.getElementById('cartTotalText');
+      const discountRow = document.getElementById('discountRow');
+      const discountText = document.getElementById('cartDiscountText');
+
+      const totalItems = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+      if (cartBadge) cartBadge.innerText = totalItems;
+
+      if (!container) return;
+
+      if (state.cart.length === 0) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 4rem 1rem;">
+            <i class="fa-solid fa-bag-shopping" style="font-size:3rem; color:var(--color-border); margin-bottom:1rem;"></i>
+            <p style="font-family:var(--font-serif); font-size:1.35rem;">Your shopping bag is empty.</p>
+            <p style="font-size:0.85rem; color:var(--color-subtle-gray); margin-bottom:1.5rem;">Discover our exquisite fragrance creations.</p>
+            <button class="btn-primary" onclick="toggleCartDrawer()">Explore Catalog</button>
+          </div>
+        `;
+        if (subtotalEl) subtotalEl.innerText = '$0.00';
+        if (totalEl) totalEl.innerText = '$0.00';
+        if (discountRow) discountRow.style.display = 'none';
+        return;
+      }
+
+      let subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+      let discount = 0;
+
+      if (state.appliedCoupon) {
+        discount = subtotal * state.appliedCoupon.rate;
+        if (discountRow) discountRow.style.display = 'flex';
+        if (discountText) discountText.innerText = `-$${discount.toFixed(2)}`;
+      } else {
+        if (discountRow) discountRow.style.display = 'none';
+      }
+
+      let finalTotal = Math.max(0, subtotal - discount);
+
+      if (subtotalEl) subtotalEl.innerText = `$${subtotal.toFixed(2)}`;
+      if (totalEl) totalEl.innerText = `$${finalTotal.toFixed(2)}`;
+
+      container.innerHTML = state.cart.map((item, idx) => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/200x200/F2ECE1/121212?text=Item'">
+          <div class="cart-item-details">
+            <h4 class="cart-item-title">${item.name}</h4>
+            <div class="cart-item-meta">Size: ${item.size}</div>
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+              <div class="qty-controls">
+                <button class="qty-btn" onclick="updateCartItemQty(${idx}, -1)">-</button>
+                <span class="qty-value">${item.quantity}</span>
+                <button class="qty-btn" onclick="updateCartItemQty(${idx}, 1)">+</button>
+              </div>
+              <strong style="font-size:0.95rem;">$${(item.price * item.quantity).toFixed(2)}</strong>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function applyCouponCode() {
+      const code = document.getElementById('couponCodeInput').value.trim().toUpperCase();
+      if (!code) return;
+
+      if (code === 'WELCOME10') {
+        state.appliedCoupon = { code: 'WELCOME10', rate: 0.10 };
+        showToast('Coupon WELCOME10 applied (10% OFF)');
+      } else if (code === 'SCENT15') {
+        state.appliedCoupon = { code: 'SCENT15', rate: 0.15 };
+        showToast('Coupon SCENT15 applied (15% OFF)');
+      } else {
+        showToast('Invalid coupon code.');
+        return;
+      }
+      updateCartUI();
+    }
+
+    function toggleCartDrawer(forceOpen = false) {
+      const drawer = document.getElementById('cartDrawer');
+      const backdrop = document.getElementById('overlayBackdrop');
+      if (forceOpen) {
+        drawer.classList.add('open');
+        backdrop.classList.add('active');
+        document.body.classList.add('modal-open');
+      } else {
+        drawer.classList.toggle('open');
+        backdrop.classList.toggle('active');
+        document.body.classList.toggle('modal-open');
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       5. WISHLIST SYSTEM
+       -------------------------------------------------------------------------- */
+    function toggleWishlist(productId) {
+      const idx = state.wishlist.indexOf(productId);
+      if (idx > -1) {
+        state.wishlist.splice(idx, 1);
+        showToast('Removed from wishlist.');
+      } else {
+        state.wishlist.push(productId);
+        showToast('Added to wishlist.');
+      }
+      saveState();
+      renderCatalog();
+    }
+
+    function updateWishlistUI() {
+      const badge = document.getElementById('wishlistCountBadge');
+      if (badge) badge.innerText = state.wishlist.length;
+    }
+
+    function toggleWishlistDrawer() {
+      if (state.wishlist.length === 0) {
+        showToast('Your wishlist is empty.');
+      } else {
+        showToast(`Wishlist contains ${state.wishlist.length} item(s).`);
+      }
+    }
+
+    /* --------------------------------------------------------------------------
+       6. QUICK VIEW & DETAIL MODAL
+       -------------------------------------------------------------------------- */
+    function openQuickViewModal(productId) {
+      const product = PRODUCT_CATALOG.find(p => p.id === productId);
+      if (!product) return;
+
+      const body = document.getElementById('quickViewModalBody');
+      const defaultSize = product.sizes[1] || product.sizes[0];
+
+      body.innerHTML = `
+        <div style="background:#F8F6F0; padding:2rem; display:flex; align-items:center; justify-content:center;">
+          <img src="${product.image}" alt="${product.name}" style="max-height:420px; object-fit:cover; border-radius:var(--radius-md);" onerror="this.src='https://placehold.co/600x800/F2ECE1/121212?text=${encodeURIComponent(product.name)}'">
+        </div>
+        <div style="padding:2.5rem; display:flex; flex-direction:column;">
+          <span style="font-size:0.75rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--color-gold); font-weight:600;">${product.family} &bull; ${product.gender}</span>
+          <h2 style="font-size:2.2rem; margin:0.3rem 0;">${product.name}</h2>
+          
+          <div style="font-family:var(--font-serif); font-size:1.8rem; font-weight:600; margin-bottom:1rem;" id="qvPriceDisplay">
+            $${defaultSize.price}.00
+          </div>
+
+          <p style="font-size:0.9rem; color:var(--color-subtle-gray); margin-bottom:1.5rem; line-height:1.6;">${product.description}</p>
+
+          <div class="notes-pyramid">
+            <div class="note-row"><strong>Top:</strong> <span>${product.notes.top}</span></div>
+            <div class="note-row"><strong>Heart:</strong> <span>${product.notes.heart}</span></div>
+            <div class="note-row"><strong>Base:</strong> <span>${product.notes.base}</span></div>
+          </div>
+
+          <div style="margin-bottom:1.5rem;">
+            <label style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; display:block; margin-bottom:0.5rem;">Select Size</label>
+            <div style="display:flex; gap:0.5rem;" id="qvSizeSelectors">
+              ${product.sizes.map((s, idx) => `
+                <button class="chip ${s.size === defaultSize.size ? 'active' : ''}" onclick="selectQvSize(this, ${s.price}, '${s.size}')">${s.size}</button>
+              `).join('')}
+            </div>
+          </div>
+
+          <button class="btn-primary" style="margin-top:auto; width:100%;" id="qvAddToCartBtn" onclick="addToCart('${product.id}', '${defaultSize.size}')">Add To Shopping Bag</button>
+        </div>
+      `;
+
+      document.getElementById('quickViewModal').classList.add('open');
+      document.getElementById('overlayBackdrop').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+
+    function selectQvSize(el, price, sizeLabel) {
+      document.querySelectorAll('#qvSizeSelectors .chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('qvPriceDisplay').innerText = `$${price}.00`;
+    }
+
+    function closeQuickViewModal() {
+      document.getElementById('quickViewModal').classList.remove('open');
+      document.getElementById('overlayBackdrop').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    /* --------------------------------------------------------------------------
+       7. SCENT FINDER AI ASSISTANT (RULE-BASED RECOMMENDATION)
+       -------------------------------------------------------------------------- */
+    let scentAiStep = 0;
+    let scentAiAnswers = {};
+
+    const SCENT_AI_STEPS = [
+      {
+        key: 'recipient',
+        question: "Welcome to Scent Finder AI. Who are you choosing a fragrance for today?",
+        options: ['Myself (For Her)', 'Myself (For Him)', 'Myself (Unisex)', 'A Special Gift']
+      },
+      {
+        key: 'family',
+        question: "Which olfactory family resonates most with your taste?",
+        options: ['Oud & Oriental', 'Floral & Romantic', 'Woody & Earthy', 'Citrus & Fresh', 'Warm Gourmand']
+      },
+      {
+        key: 'occasion',
+        question: "What is the primary occasion for this fragrance?",
+        options: ['Everyday Signature', 'Evening & Gala', 'Office & Professional', 'Weekend Escape']
+      }
+    ];
+
+    function toggleScentAI() {
+      const modal = document.getElementById('scentAiModal');
+      modal.classList.toggle('active');
+    }
+
+    function openScentAI() {
+      document.getElementById('scentAiModal').classList.add('active');
+    }
+
+    function initScentAiQuestionnaire() {
+      scentAiStep = 0;
+      scentAiAnswers = {};
+      const chatBody = document.getElementById('aiChatBody');
+      if (!chatBody) return;
+      chatBody.innerHTML = '';
+      renderScentAiStep();
+    }
+
+    function resetScentAiQuestionnaire() {
+      initScentAiQuestionnaire();
+    }
+
+    function renderScentAiStep() {
+      const chatBody = document.getElementById('aiChatBody');
+
+      if (scentAiStep < SCENT_AI_STEPS.length) {
+        const step = SCENT_AI_STEPS[scentAiStep];
+        
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-msg bot';
+        botMsg.innerHTML = `
+          <div>${step.question}</div>
+          <div class="chip-options">
+            ${step.options.map(opt => `<button class="option-chip" onclick="handleAiAnswer('${step.key}', '${opt}')">${opt}</button>`).join('')}
+          </div>
+        `;
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      } else {
+        // Calculate recommendation based on rule engine
+        calculateScentRecommendation();
+      }
+    }
+
+    function handleAiAnswer(key, val) {
+      scentAiAnswers[key] = val;
+      const chatBody = document.getElementById('aiChatBody');
+
+      // Append User message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg user';
+      userMsg.innerText = val;
+      chatBody.appendChild(userMsg);
+
+      scentAiStep++;
+      setTimeout(renderScentAiStep, 400);
+    }
+
+    function calculateScentRecommendation() {
+      const chatBody = document.getElementById('aiChatBody');
+      
+      // Recommendation Logic
+      let matches = PRODUCT_CATALOG.filter(p => {
+        if (scentAiAnswers.family === 'Oud & Oriental' && p.family.includes('Oud')) return true;
+        if (scentAiAnswers.family === 'Floral & Romantic' && p.family.includes('Floral')) return true;
+        if (scentAiAnswers.family === 'Woody & Earthy' && p.family.includes('Woody')) return true;
+        if (scentAiAnswers.family === 'Citrus & Fresh' && p.family.includes('Citrus')) return true;
+        if (scentAiAnswers.family === 'Warm Gourmand' && p.family.includes('Gourmand')) return true;
+        return false;
+      });
+
+      if (matches.length === 0) matches = [PRODUCT_CATALOG[0], PRODUCT_CATALOG[4]];
+
+      const botMsg = document.createElement('div');
+      botMsg.className = 'chat-msg bot';
+      botMsg.innerHTML = `
+        <strong>Based on your preferences, here is your curated signature match:</strong>
+      `;
+
+      matches.slice(0, 2).forEach(rec => {
+        const recCard = document.createElement('div');
+        recCard.className = 'ai-recommendation-card';
+        recCard.innerHTML = `
+          <img src="${rec.image}" alt="${rec.name}">
+          <div class="ai-rec-details">
+            <div class="ai-rec-title">${rec.name}</div>
+            <div class="ai-rec-reason">${rec.family} &bull; $${rec.sizes[1].price}</div>
+            <button class="btn-primary" style="font-size:0.65rem; padding:0.4rem 0.8rem; margin-top:0.3rem;" onclick="addToCart('${rec.id}', '${rec.sizes[1].size}')">Add Match To Bag</button>
+          </div>
+        `;
+        botMsg.appendChild(recCard);
+      });
+
+      chatBody.appendChild(botMsg);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    /* --------------------------------------------------------------------------
+       8. MULTI-STEP CHECKOUT WORKFLOW
+       -------------------------------------------------------------------------- */
+    function openCheckoutModal() {
+      if (state.cart.length === 0) {
+        showToast('Your bag is empty.');
+        return;
+      }
+      toggleCartDrawer(false);
+      state.checkoutStep = 1;
+      renderCheckoutStep();
+      document.getElementById('checkoutModal').classList.add('open');
+      document.getElementById('overlayBackdrop').classList.add('active');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeCheckoutModal() {
+      document.getElementById('checkoutModal').classList.remove('open');
+      document.getElementById('overlayBackdrop').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    function renderCheckoutStep() {
+      const content = document.getElementById('checkoutStepContent');
+      
+      // Update step indicators
+      for (let i = 1; i <= 4; i++) {
+        const ind = document.getElementById(`stepIndicator${i}`);
+        if (ind) ind.className = `step-item ${i === state.checkoutStep ? 'active' : ''}`;
+      }
+
+      if (state.checkoutStep === 1) {
+        content.innerHTML = `
+          <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:1.5rem;">Step 1: Client Information</h3>
+          <form onsubmit="handleCheckoutStep1(event)">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" required id="coFirstName" value="${state.checkoutData.firstName || ''}">
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" required id="coLastName" value="${state.checkoutData.lastName || ''}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" class="form-control" required id="coEmail" value="${state.checkoutData.email || ''}">
+            </div>
+            <button class="btn-primary" style="width:100%; margin-top:1rem;" type="submit">Continue to Shipping</button>
+          </form>
+        `;
+      } else if (state.checkoutStep === 2) {
+        content.innerHTML = `
+          <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:1.5rem;">Step 2: Shipping Address</h3>
+          <form onsubmit="handleCheckoutStep2(event)">
+            <div class="form-group">
+              <label>Street Address</label>
+              <input type="text" class="form-control" required id="coAddress" value="${state.checkoutData.address || ''}">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>City</label>
+                <input type="text" class="form-control" required id="coCity" value="${state.checkoutData.city || ''}">
+              </div>
+              <div class="form-group">
+                <label>Postal Code</label>
+                <input type="text" class="form-control" required id="coZip" value="${state.checkoutData.zip || ''}">
+              </div>
+            </div>
+            <div style="display:flex; gap:1rem; margin-top:1rem;">
+              <button class="btn-secondary" type="button" style="flex:1;" onclick="setCheckoutStep(1)">Back</button>
+              <button class="btn-primary" type="submit" style="flex:1;">Continue to Review</button>
+            </div>
+          </form>
+        `;
+      } else if (state.checkoutStep === 3) {
+        let subtotal = state.cart.reduce((s, i) => s + (i.price * i.quantity), 0);
+        let discount = state.appliedCoupon ? subtotal * state.appliedCoupon.rate : 0;
+        let total = subtotal - discount;
+
+        content.innerHTML = `
+          <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:1.5rem;">Step 3: Review Order Summary</h3>
+          <div style="background:var(--bg-champagne); padding:1.25rem; border-radius:var(--radius-md); margin-bottom:1.5rem;">
+            ${state.cart.map(i => `
+              <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.5rem;">
+                <span>${i.name} (${i.size}) x${i.quantity}</span>
+                <strong>$${(i.price * i.quantity).toFixed(2)}</strong>
+              </div>
+            `).join('')}
+            <div style="border-top:1px solid var(--color-border); padding-top:0.75rem; margin-top:0.75rem;">
+              <div style="display:flex; justify-content:space-between; font-weight:600;">
+                <span>Total Amount:</span>
+                <span>$${total.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex; gap:1rem;">
+            <button class="btn-secondary" style="flex:1;" onclick="setCheckoutStep(2)">Back</button>
+            <button class="btn-primary" style="flex:1;" onclick="setCheckoutStep(4)">Proceed to Payment</button>
+          </div>
+        `;
+      } else if (state.checkoutStep === 4) {
+        content.innerHTML = `
+          <h3 style="font-family:var(--font-serif); font-size:1.6rem; margin-bottom:1.5rem;">Step 4: Demo Payment</h3>
+          <div style="background:var(--color-gold-light); border:1px solid var(--color-gold); padding:1rem; border-radius:var(--radius-sm); font-size:0.8rem; margin-bottom:1.5rem;">
+            <i class="fa-solid fa-lock"></i> Simulated Secure Checkout Gateway. No real card details will be charged.
+          </div>
+          <button class="btn-gold" style="width:100%;" onclick="completeDemoOrder()">Complete Demo Order</button>
+        `;
+      }
+    }
+
+    function setCheckoutStep(step) {
+      state.checkoutStep = step;
+      renderCheckoutStep();
+    }
+
+    function handleCheckoutStep1(e) {
+      e.preventDefault();
+      state.checkoutData.firstName = document.getElementById('coFirstName').value;
+      state.checkoutData.lastName = document.getElementById('coLastName').value;
+      state.checkoutData.email = document.getElementById('coEmail').value;
+      setCheckoutStep(2);
+    }
+
+    function handleCheckoutStep2(e) {
+      e.preventDefault();
+      state.checkoutData.address = document.getElementById('coAddress').value;
+      state.checkoutData.city = document.getElementById('coCity').value;
+      state.checkoutData.zip = document.getElementById('coZip').value;
+      setCheckoutStep(3);
+    }
+
+    function completeDemoOrder() {
+      const orderId = 'ELR-' + Math.floor(100000 + Math.random() * 900000);
+      const content = document.getElementById('checkoutStepContent');
+
+      content.innerHTML = `
+        <div style="text-align:center; padding:2rem 1rem;">
+          <i class="fa-solid fa-circle-check" style="font-size:3.5rem; color:var(--color-success); margin-bottom:1rem;"></i>
+          <h2 style="font-size:2rem; margin-bottom:0.5rem;">Order Confirmed</h2>
+          <p style="color:var(--color-subtle-gray); font-size:0.9rem;">Thank you, ${state.checkoutData.firstName || 'Valued Client'}. Your order number is <strong>${orderId}</strong>.</p>
+          <p style="font-size:0.8rem; color:var(--color-subtle-gray); margin-top:0.5rem;">A confirmation email has been sent to ${state.checkoutData.email || 'your inbox'}.</p>
+          <button class="btn-primary" style="margin-top:2rem;" onclick="closeCheckoutModal()">Return to Atelier</button>
+        </div>
+      `;
+
+      // Clear Cart
+      state.cart = [];
+      state.appliedCoupon = null;
+      saveState();
+    }
+
+    /* --------------------------------------------------------------------------
+       9. UTILITY MODALS, FAQ ACCORDION & TOASTS
+       -------------------------------------------------------------------------- */
+    function openSearchModal() {
+      document.getElementById('searchModal').classList.add('open');
+      document.getElementById('overlayBackdrop').classList.add('active');
+    }
+
+    function closeSearchModal() {
+      document.getElementById('searchModal').classList.remove('open');
+      document.getElementById('overlayBackdrop').classList.remove('active');
+    }
+
+    function executeModalSearch(val) {
+      const resContainer = document.getElementById('modalSearchResults');
+      if (!val.trim()) {
+        resContainer.innerHTML = '';
+        return;
+      }
+
+      const results = PRODUCT_CATALOG.filter(p => 
+        p.name.toLowerCase().includes(val.toLowerCase()) || 
+        p.family.toLowerCase().includes(val.toLowerCase())
+      );
+
+      resContainer.innerHTML = results.map(p => `
+        <div style="display:flex; gap:1rem; align-items:center; padding:0.5rem 0; border-bottom:1px solid var(--color-border); cursor:pointer;" onclick="closeSearchModal(); openQuickViewModal('${p.id}')">
+          <img src="${p.image}" style="width:40px; height:40px; object-fit:cover; border-radius:var(--radius-sm);">
+          <div>
+            <strong style="display:block; font-size:0.9rem;">${p.name}</strong>
+            <span style="font-size:0.75rem; color:var(--color-subtle-gray);">${p.family}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openAccountModal() {
+      document.getElementById('accountModal').classList.add('open');
+      document.getElementById('overlayBackdrop').classList.add('active');
+    }
+
+    function closeAccountModal() {
+      document.getElementById('accountModal').classList.remove('open');
+      document.getElementById('overlayBackdrop').classList.remove('active');
+    }
+
+    function handleAccountLogin(e) {
+      e.preventDefault();
+      closeAccountModal();
+      showToast('Welcome back to ÉLORA Atelier.');
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById('mobileMenu').classList.toggle('open');
+      document.getElementById('overlayBackdrop').classList.toggle('active');
+    }
+
+    function closeAllDrawersAndModals() {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.getElementById('quickViewModal').classList.remove('open');
+      document.getElementById('checkoutModal').classList.remove('open');
+      document.getElementById('searchModal').classList.remove('open');
+      document.getElementById('accountModal').classList.remove('open');
+      document.getElementById('overlayBackdrop').classList.remove('active');
+      document.body.classList.remove('modal-open');
+    }
+
+    function toggleFaq(el) {
+      el.classList.toggle('active');
+    }
+
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      showToast('Thank you for subscribing to our Atelier invitations.');
+      e.target.reset();
+    }
+
+    function showToast(message) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.innerText = message;
+      container.appendChild(toast);
+
+      setTimeout(() => {
+        toast.remove();
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
